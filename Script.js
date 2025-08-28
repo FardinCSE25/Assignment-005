@@ -33,7 +33,7 @@ for (let i = 0; i < callBtns.length; i++) {
         historyCollector.unshift(callHistoryData)
         for(const history of historyCollector){
             const div = document.createElement("div")
-            div.innerHTML = `<div class="flex items-center justify-between bg-[#fafafa] mb-3 p-4 rounded-lg">
+            div.innerHTML = `<div id="call-history-container" class="flex items-center justify-between bg-[#fafafa] mb-3 p-4 rounded-lg">
             <div>
                 <h1 class="text-lg font-semibold">${history.name}</h1>
                 <p class="text-[#5c5c5c]">${history.number}</p>
@@ -58,3 +58,12 @@ for (let i = 0; i < copyBtns.length; i++) {
         copyCount++
         document.getElementById("copy").innerText = copyCount;
     }) }
+// Clear
+
+const clear = document.getElementById("clear")
+const historyContainer = 
+clear.addEventListener("click", function(e){
+    e.preventDefault()
+    document.getElementById("history").style.display = "none"
+}
+)
