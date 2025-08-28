@@ -8,20 +8,32 @@ for (const heart of hearts) {
     })
 }
 // Call 
-const Services = document.getElementsByClassName("Call")
+const callBtns = document.getElementsByClassName("Call")
 const serviceName = document.getElementsByClassName("service-name")
 const serviceNumber = document.getElementsByClassName("service-number")
 
-for (let i = 0; i < Services.length; i++) {
-    Services[i].addEventListener("click", function callBtnClick(e) {
+for (let i = 0; i < callBtns.length; i++) {
+    callBtns[i].addEventListener("click", function (e) {
         e.preventDefault();
-        alert("Calling" + ' ' + serviceName[i].innerText + ' ' + serviceNumber[i].innerText + '.....')
         let coins = parseInt(document.getElementById("coins").innerText)
         if(coins <= 0){
             alert("You haven't sufficient coins !!!")
             return
         }
+        else{
+            alert("Calling" + ' ' + serviceName[i].innerText + ' ' + serviceNumber[i].innerText + '.....')
+        }
         let remainingCoins = coins - 20;
         document.getElementById("coins").innerText = remainingCoins;
+    })
+}
+// Copy
+const copyBtns = document.getElementsByClassName("Copy")
+for (let i = 0; i < copyBtns.length; i++) {
+    copyBtns[i].addEventListener("click", function (e) {
+        e.preventDefault();
+        let copyCount = parseInt(document.getElementById("copy").innerText)
+        copyCount++
+        document.getElementById("copy").innerText = copyCount;
     })
 }
