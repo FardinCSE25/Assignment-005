@@ -30,10 +30,10 @@ for (let i = 0; i < callBtns.length; i++) {
             number : serviceNumber[i].innerText,
             time : new Date().toLocaleTimeString([], { hour : "2-digit", minute : "2-digit", second : "2-digit"})
         }
-        historyCollector.push(callHistoryData)
+        historyCollector.unshift(callHistoryData)
         for(const history of historyCollector){
             const div = document.createElement("div")
-            div.innerHTML = `<div class="flex items-center justify-between bg-[#fafafa] mb-2 p-4 rounded-lg">
+            div.innerHTML = `<div class="flex items-center justify-between bg-[#fafafa] mb-3 p-4 rounded-lg">
             <div>
                 <h1 class="text-lg font-semibold">${history.name}</h1>
                 <p class="text-[#5c5c5c]">${history.number}</p>
