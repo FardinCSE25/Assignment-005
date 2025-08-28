@@ -11,7 +11,7 @@ for (const heart of hearts) {
 const callBtns = document.getElementsByClassName("Call")
 const serviceName = document.getElementsByClassName("service-name")
 const serviceNumber = document.getElementsByClassName("service-number")
-const historyCollector = []
+let historyCollector = []
 for (let i = 0; i < callBtns.length; i++) {
     callBtns[i].addEventListener("click", function (e) {
         e.preventDefault();
@@ -23,15 +23,25 @@ for (let i = 0; i < callBtns.length; i++) {
         else{
             alert("Calling" + ' ' + serviceName[i].innerText + ' ' + serviceNumber[i].innerText + '.....')
         }
-
         const historyData = document.getElementById("history")
         const callHistoryData = {
             name : serviceName[i].innerText,
             number : serviceNumber[i].innerText,
             time : new Date().toLocaleTimeString([], { hour : "2-digit", minute : "2-digit", second : "2-digit"})
         }
+    // clear
+        const clear = document.getElementById("clear")
+    clear.addEventListener("click", function(e){
+    e.preventDefault()
+    document.getElementById("history").innerHTML = ""
+    historyCollector = [];
+    })
+
+
+        historyData.innerHTML = ""
         historyCollector.unshift(callHistoryData)
         for(const history of historyCollector){
+            
             const div = document.createElement("div")
             div.innerHTML = `<div id="call-history-container" class="flex items-center justify-between bg-[#fafafa] mb-3 p-4 rounded-lg">
             <div>
@@ -41,7 +51,7 @@ for (let i = 0; i < callBtns.length; i++) {
             <div class="text-lg">${history.time}</div>
         </div>`
         historyData.appendChild(div)
-
+        
         }
         let remainingCoins = coins - 20;
         document.getElementById("coins").innerText = remainingCoins;
@@ -58,12 +68,3 @@ for (let i = 0; i < copyBtns.length; i++) {
         copyCount++
         document.getElementById("copy").innerText = copyCount;
     }) }
-// Clear
-
-const clear = document.getElementById("clear")
-const historyContainer = 
-clear.addEventListener("click", function(e){
-    e.preventDefault()
-    document.getElementById("history").style.display = "none"
-}
-)
